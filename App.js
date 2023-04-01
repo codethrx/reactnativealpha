@@ -1,96 +1,89 @@
-import { useState } from "react";
-import { View, Text, TextInput, Pressable, ScrollView } from "react-native";
-import tailwind from "twrnc";
+import React from "react";
+import {
+  View,
+  KeyboardAvoidingView,
+  TextInput,
+  StyleSheet,
+  Text,
+  Platform,
+  TouchableWithoutFeedback,
+  Button,
+  Keyboard,
+  ScrollView,
+} from "react-native";
 
-export default function SignupScreen() {
-  const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState(null);
-
+const KeyboardAvoidingComponent = () => {
   return (
-    <ScrollView
-      contentContainerStyle={tailwind`flex-1 items-center justify-center`}
-      style={tailwind` bg-black`}
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.container}
     >
-      {error ? (
-        <View
-          style={tailwind`absolute top-8 w-full bg-red-400 mx-8 max-w-sm p-4 rounded-md`}
-        >
-          <Text style={tailwind`text-white text-medium font-bold`}>
-            Email addresses don't match
-          </Text>
-        </View>
-      ) : null}
-      <View style={tailwind`p-8 w-full max-w-sm`}>
-        <Text
-          style={tailwind`text-4xl bg-[#23d998] rounded-lg p-4 font-bold mb-6 text-white`}
-        >
-          Sign up
-        </Text>
-
+      <ScrollView>
+        <Text style={styles.header}>Header</Text>
         <TextInput
-          style={tailwind`w-full bg-white rounded-md h-12 px-4 mb-4`}
-          placeholderTextColor="#000"
-          placeholder="Enter email address"
-          autoCapitalize="none"
-          keyboardType="email-address"
-        />
-
-        <TextInput
-          style={tailwind`w-full bg-white rounded-md h-12 px-4 mb-4`}
-          placeholderTextColor="#000"
-          placeholder="Confirm email address"
-          autoCapitalize="none"
-          keyboardType="email-address"
+          placeholder="Username"
+          style={styles.textInput}
+          placeholderTextColor="#ccc"
         />
         <TextInput
-          style={tailwind`w-full bg-white rounded-md h-12 px-4 mb-4`}
-          placeholderTextColor="#000"
-          placeholder="Confirm email address"
-          autoCapitalize="none"
-          keyboardType="email-address"
-        />
-
-        <TextInput
-          style={tailwind`w-full bg-white rounded-md h-12 px-4 mb-4`}
-          placeholderTextColor="#000"
-          placeholder="Enter password"
-          secureTextEntry={!showPassword}
+          placeholder="Username"
+          style={styles.textInput}
+          placeholderTextColor="#ccc"
         />
         <TextInput
-          style={tailwind`w-full bg-white rounded-md h-12 px-4 mb-4`}
-          placeholderTextColor="#000"
-          placeholder="Enter password"
-          secureTextEntry={!showPassword}
+          placeholder="Username"
+          style={styles.textInput}
+          placeholderTextColor="#ccc"
         />
         <TextInput
-          style={tailwind`w-full bg-white rounded-md h-12 px-4`}
-          placeholderTextColor="#000"
-          placeholder="Confirm password"
-          secureTextEntry={!showPassword}
+          placeholder="Username"
+          style={styles.textInput}
+          placeholderTextColor="#ccc"
         />
-
-        <View style={tailwind`flex-row items-center my-8`}>
-          <Pressable
-            style={tailwind`flex items-center justify-center bg-white h-6 w-6 rounded-sm mr-3`}
-          >
-            <View style={tailwind`bg-green-400 h-4 w-4 rounded-sm`} />
-          </Pressable>
-          <Text style={tailwind`text-white`}>
-            I've read and agree to the terms and conditions and the privacy
-            policy
-          </Text>
-        </View>
-
-        <Pressable
-          style={tailwind`h-12 border-2 border-white rounded-md flex flex-row justify-center items-center px-6`}
-        >
-          <View style={tailwind`flex-1 flex items-center`}>
-            <Text style={tailwind`text-white text-base font-medium`}>
-              Sign up
-            </Text>
-          </View>
-        </Pressable>
-      </View>
-    </ScrollView>
+        <TextInput
+          placeholder="Username"
+          style={styles.textInput}
+          placeholderTextColor="#ccc"
+        />
+        <TextInput
+          placeholder="Username"
+          style={styles.textInput}
+          placeholderTextColor="#ccc"
+        />
+        <TextInput placeholder="Username" style={styles.textInput} />
+        <TextInput placeholder="Username" style={styles.textInput} />
+        <TextInput placeholder="Username" style={styles.textInput} />
+        <Button title="lolx" />
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
-}
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    paddingTop: 50,
+  },
+  inner: {
+    padding: 24,
+    flex: 1,
+    justifyContent: "space-around",
+  },
+  header: {
+    fontSize: 36,
+    marginBottom: 48,
+  },
+  textInput: {
+    height: 40,
+    borderColor: "#000000",
+    borderBottomWidth: 1,
+    marginBottom: 26,
+  },
+  btnContainer: {
+    backgroundColor: "white",
+    marginTop: 12,
+  },
+});
+
+export default KeyboardAvoidingComponent;
