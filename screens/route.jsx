@@ -9,14 +9,17 @@ function HomeScreen({ navigation }) {
       <Text>Home Screen</Text>
       <Button
         onPress={() => {
-          navigation.navigate("Items", { payload: "Title payload..." });
+          navigation.push("Items", { payload: "Title payload..." });
         }}
         title="Push to a new screen baby"
       />
     </View>
   );
 }
-function Items({ route }) {
+function Items({ route, navigation }) {
+  React.useLayoutEffect(() => {
+    navigation.setOptions({ headerShown: false });
+  }, [navigation]);
   return (
     <View style={{ flex: 1 }}>
       <ScrollView>
